@@ -54,11 +54,11 @@ class Owner
 
   # walks the dogs which makes the dogs' moods happy
   def walk_dogs
-    Dog.mood = "happy"
+    dogs.map {|dog| dog.mood = "happy"}
   end
 
   def feed_cats
-    Cat.mood = "happy"
+    cats.map {|dog| dog.mood = "happy"}
   end 
 
   # can sell all its pets, which makes them nervous
@@ -72,6 +72,6 @@ class Owner
       
   # can list off its pets
   def list_pets
-    "I have #{self.dog.count} dog(s), and #{self.cat.count} cat(s)."
+    "I have #{dogs.count} dog(s), and #{cats.count} cat(s)."
   end
 end
