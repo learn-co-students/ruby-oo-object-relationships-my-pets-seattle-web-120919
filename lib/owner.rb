@@ -1,11 +1,11 @@
-#An Owner will know about all their pets, be able to buy a pet, 
-#change a pet's mood through walking or feeding it, and sell all of their pets
 require 'pry'
+
 class Owner
-  attr_accessor :dog, :cat, :mood
+  attr_accessor :dog, :cat
   attr_reader :name, :species
   @@all = []
 
+  #An Owner will know about all their pets
   def initialize(name)
     @name = name 
     @@all << self
@@ -54,17 +54,17 @@ class Owner
 
   # walks the dogs which makes the dogs' moods happy
   def walk_dogs
-    Dog.self.mood = "happy"
+    Dog.mood = "happy"
   end
 
   def feed_cats
-    Cat.self.mood = "happy"
+    Cat.mood = "happy"
   end 
 
   # can sell all its pets, which makes them nervous
   # can sell all its pets, which leaves them without an owner
-  def sell_pets
   # iterate through all pets (cats + dogs)
+  def sell_pets
   pets = Cat.all + Dog.all 
   pets.each {|pet| pet.mood = "nervous"}
   pets.each {|pet| pet.owner = nil }
@@ -72,6 +72,6 @@ class Owner
       
   # can list off its pets
   def list_pets
-    "I have #{@owner.dog.count} dog(s), and #{@owner.cat.count} cat(s)."
+    "I have #{self.dog.count} dog(s), and #{self.cat.count} cat(s)."
   end
 end
