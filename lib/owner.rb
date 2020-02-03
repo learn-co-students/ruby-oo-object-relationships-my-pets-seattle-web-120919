@@ -1,8 +1,7 @@
 require "pry"
 
 class Owner
-  # code goes here
-  attr_reader :name, :human, :species
+  attr_reader :name, :species
 
   @@all = []
 
@@ -13,7 +12,7 @@ class Owner
   end
 
   def say_species
-    "I am a #{self.species}."
+    "I am a #{species}."
   end
 
   def self.all
@@ -22,23 +21,19 @@ class Owner
 
   def self.count
     self.all.count
-    #binding.pry
   end
 
   def self.reset_all
     self.all.clear
-    #binding.pry
   end
 
   def cats
     Cat.all.select { |cat| cat.owner == self }
-    # binding.pry
+    #binding.pry
   end
 
   def dogs
     Dog.all.select { |dog| dog.owner == self }
-    #binding.pry
-    #binding.pry
   end
 
   def buy_cat(name)
@@ -50,16 +45,15 @@ class Owner
   end
 
   def walk_dogs
-    self.dogs.each { |dog| dog.mood = "happy" }
-    #binding.pry
+    dogs.each { |dog| dog.mood = "happy" }
   end
 
   def feed_cats
-    self.cats.each { |cat| cat.mood = "happy" }
+    cats.each { |cat| cat.mood = "happy" }
   end
 
   def owners_pets
-    self.cats + self.dogs
+    dogs + cats
   end
 
   def sell_pets
